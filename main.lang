@@ -1,0 +1,65 @@
+x = $Bin 0101010101010101
+y = $Bin 0011001100110011
+z = $Bin 0000111100001111
+w = $Bin 0000000011111111
+k = ! ( x . ( y + z ) . w )
+true = $Bin 1
+false = $Bin 0
+
+if true . false {
+    a = $Bin 1
+    b = $Bin 1
+    c = a + b
+} elif false {
+    e = $Bin 1
+} else {
+    d = $Bin 1
+}
+
+a = $Bin 1
+b = $Bin 0
+c = $Bin 0
+d = $Bin 0
+
+while d = false {
+    d = c
+    c = b
+    b = a
+}
+
+func1 = $Func param1 , param2 {
+    return = param1 + param2
+
+}
+
+z = func1 <- x , y
+
+w = func1 <- x + y , y
+
+# Potential syntax
+# type $TypeName {
+#   _read = $Func string {
+#       read the string and set the value (_self) accordingly
+#    }
+# }
+
+# Figure out if string = "true" or string = 0001001etc is the correct approach
+
+type $Bool {
+
+    _read = $Func string {
+        if string = ???? {
+            _self = 1
+        } else {
+            _self = 0
+        }
+    }
+
+    not = $Func not {
+        if _self {
+            _self = 0
+        } else {
+            _self = 1
+        }
+    }
+}
